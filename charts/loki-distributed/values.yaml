@@ -4,6 +4,9 @@ global:
     registry: null
   # -- Overrides the priorityClassName for all pods
   priorityClassName: null
+  # -- default set of annotations applied to all pods; ideful for configuring access
+  # with tools like https://github.com/uswitch/kiam
+  podAnnotations: {}
 
 # -- Overrides the chart's name
 nameOverride: null
@@ -26,6 +29,7 @@ loki:
     pullPolicy: IfNotPresent
   # -- Common annotations for all pods
   podAnnotations: {}
+  # podAnnotations: {{ .Values.global.podAnnotations }}
   # -- The number of old ReplicaSets to retain to allow rollback
   revisionHistoryLimit: 10
   # -- The SecurityContext for Loki pods
